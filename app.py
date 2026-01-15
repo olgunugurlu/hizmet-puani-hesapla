@@ -8,6 +8,16 @@ from collections import defaultdict
 # -------------------- CONFIG --------------------
 st.set_page_config(page_title="Hizmet Puanı Hesaplayıcı", layout="wide")
 
+# -------------------- HIDE MENU STYLE --------------------
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            header {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 # -------------------- DAILY POINTS TABLE --------------------
 DAILY_POINTS = {
     1: {1: 0.028, 2: 0.031, 3: 0.033, 4: 0.046, 5: 0.053, 6: 0.060},
