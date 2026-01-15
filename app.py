@@ -36,14 +36,15 @@ STUDENT_AWARD_POINTS = {
     "ULUSLARARASI 3.lük/Mansiyon (Bilim Olimpiyatları, Proje vb.)": {"1-3": 10, "4-6": 20},
 }
 
+# Yönetmelik Madde 21 (7): Ulusal/Uluslararası bilimsel, sanatsal, kültürel veya sportif yarışmalar
 TEACHER_AWARD_POINTS = {
     "Yok": 0,
-    "Ulusal 1.": 20,
-    "Ulusal 2.": 15,
-    "Ulusal 3./Mansiyon": 10,
-    "Uluslararası 1.": 35,
-    "Uluslararası 2.": 25,
-    "Uluslararası 3./Mansiyon": 15,
+    "ULUSAL 1.lik (Bilimsel, Sanatsal, Kültürel, Sportif)": 20,
+    "ULUSAL 2.lik (Bilimsel, Sanatsal, Kültürel, Sportif)": 15,
+    "ULUSAL 3.lük/Mansiyon (Bilimsel, Sanatsal, Kültürel, Sportif)": 10,
+    "ULUSLARARASI 1.lik (Bilimsel, Sanatsal, Kültürel, Sportif)": 35,
+    "ULUSLARARASI 2.lik (Bilimsel, Sanatsal, Kültürel, Sportif)": 25,
+    "ULUSLARARASI 3.lük/Mansiyon (Bilimsel, Sanatsal, Kültürel, Sportif)": 15,
 }
 
 KIND_LABELS = {
