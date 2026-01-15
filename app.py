@@ -362,7 +362,7 @@ def to_excel_bytes(detail_df, year_df, extras_df, warnings_list, meta_dict):
     return output.getvalue()
 
 # -------------------- TABS --------------------
-tab1, tab2, tab3, tab4 = st.tabs(["Görevler / Okullar", "Takvim / Tatiller", "Yardım / SSS", "Eleştirel Bakış"])
+tab1, tab2, tab3, tab4 = st.tabs(["Görevler / Okullar", "Takvim / Tatiller", "Yardım / SSS", "Potansiyel Risk"])
 
 with tab1:
     st.subheader("Görevler / Okullar")
