@@ -28,13 +28,14 @@ DAILY_POINTS = {
 # -------------------- EXTRA POINTS --------------------
 STUDENT_AWARD_POINTS = {
     "Yok": {"1-3": 0, "4-6": 0},
-    "Ulusal 1.": {"1-3": 15, "4-6": 20},
-    "Ulusal 2.": {"1-3": 10, "4-6": 15},
-    "Ulusal 3./Mansiyon": {"1-3": 5, "4-6": 10},
-    "Uluslararası 1.": {"1-3": 30, "4-6": 40},
-    "Uluslararası 2.": {"1-3": 20, "4-6": 30},
-    "Uluslararası 3./Mansiyon": {"1-3": 10, "4-6": 20},
+    "ULUSAL 1.lik (TÜBİTAK, TÜBA, TEKNOFEST vb.)": {"1-3": 15, "4-6": 20},
+    "ULUSAL 2.lik (TÜBİTAK, TÜBA, TEKNOFEST vb.)": {"1-3": 10, "4-6": 15},
+    "ULUSAL 3.lük/Mansiyon (TÜBİTAK, TÜBA, TEKNOFEST vb.)": {"1-3": 5, "4-6": 10},
+    "ULUSLARARASI 1.lik (Bilim Olimpiyatları, Proje vb.)": {"1-3": 30, "4-6": 40},
+    "ULUSLARARASI 2.lik (Bilim Olimpiyatları, Proje vb.)": {"1-3": 20, "4-6": 30},
+    "ULUSLARARASI 3.lük/Mansiyon (Bilim Olimpiyatları, Proje vb.)": {"1-3": 10, "4-6": 20},
 }
+
 TEACHER_AWARD_POINTS = {
     "Yok": 0,
     "Ulusal 1.": 20,
