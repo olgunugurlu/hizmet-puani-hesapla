@@ -623,21 +623,21 @@ with tab4:
     # 1. Rotasyon
     st.subheader("1. 12 Yıl Rotasyon Kuralı ve 'Resen' Atama Riski (Madde 28)")
     st.markdown("""
-    [cite_start]Yönetmeliğin **28. maddesi**, aynı eğitim kurumunda toplamda **en fazla 12 yıl** görev yapılabileceğini ve bu süreyi dolduranların yer değiştirmesini zorunlu kılmaktadır[cite: 297].
+    Yönetmeliğin **28. maddesi**, aynı eğitim kurumunda toplamda **en fazla 12 yıl** görev yapılabileceğini ve bu süreyi dolduranların yer değiştirmesini zorunlu kılmaktadır.
     """)
     st.warning("**Sorun:** Bu durum, okul kültürünü benimsemiş, başarısı kanıtlanmış ve veli/öğrenci ile bütünleşmiş tecrübeli öğretmenlerin zorla yerinden edilmesine neden olabilir.")
-    [cite_start]st.error("**Risk:** Yönetmeliğin **28/2. maddesine** göre tercihlerine yerleşemeyen öğretmenlerin valiliklerce **'resen'** (istek dışı) atanacak olması[cite: 299], motivasyon kaybına ve aile düzenlerinin bozulmasına yol açabilir.")
+    st.error("**Risk:** Yönetmeliğin **28/2. maddesine** göre tercihlerine yerleşemeyen öğretmenlerin valiliklerce **'resen'** (istek dışı) atanacak olması, motivasyon kaybına ve aile düzenlerinin bozulmasına yol açabilir.")
 
     st.divider()
 
     # 2. Yarışma Puanları
     st.subheader("2. Yarışma ve Ödül Puanlarının Dengesizliği (Madde 21/5)")
     st.markdown("""
-    [cite_start]Yönetmeliğin **21. maddesinin 5. fıkrası**, TÜBİTAK, Teknofest vb. yarışmalarda derece alan öğrencilerin öğretmenlerine **15 ile 40 puan arasında** değişen yüksek ek puanlar vermektedir[cite: 196, 197, 198, 199, 200].
+    Yönetmeliğin **21. maddesinin 5. fıkrası**, TÜBİTAK, Teknofest vb. yarışmalarda derece alan öğrencilerin öğretmenlerine **15 ile 40 puan arasında** değişen yüksek ek puanlar vermektedir.
     """)
     col_a, col_b = st.columns(2)
     with col_a:
-        [cite_start]st.warning("**Sorun:** Bir öğretmenin 1. hizmet bölgesinde (en rahat yerler) 1 yıl boyunca (360 gün) çalışarak alacağı puan ortalama **10-12 puan** civarındayken[cite: 181], tek bir yarışma derecesiyle **40 puana** kadar ek puan alınabilmesi 'günlük emeği' değersizleştirebilir.")
+        st.warning("**Sorun:** Bir öğretmenin 1. hizmet bölgesinde (en rahat yerler) 1 yıl boyunca (360 gün) çalışarak alacağı puan ortalama **10-12 puan** civarındayken, tek bir yarışma derecesiyle **40 puana** kadar ek puan alınabilmesi 'günlük emeği' değersizleştirebilir.")
     with col_b:
         st.info("**Eşitsizlik:** İmkânları geniş, laboratuvarı olan, sosyo-ekonomik düzeyi yüksek okullardaki öğretmenlerin bu yarışmalara katılması daha kolaydır. Bu durum, avantajlı okullardaki öğretmenlerin puan farkını daha hızlı açmasına neden olabilir.")
 
@@ -646,7 +646,7 @@ with tab4:
     # 3. Resen Atama
     st.subheader("3. 'Resen' Atama Uygulamalarının Yaygınlığı (Madde 24 ve 34)")
     st.markdown("""
-    [cite_start]Yönetmelikte hem **zorunlu hizmet (Madde 24/2)** [cite: 254] [cite_start]hem de **norm kadro fazlası (Madde 34/2-3)** [cite: 393, 395] durumlarında "tercihte bulunmayanların resen atanacağı" vurgusu net bir şekilde yapılmıştır.
+    Yönetmelikte hem **zorunlu hizmet (Madde 24/2)**  hem de **norm kadro fazlası (Madde 34/2-3)** durumlarında "tercihte bulunmayanların resen atanacağı" vurgusu net bir şekilde yapılmıştır.
     """)
     st.error("**Risk:** Norm fazlası durumuna düşmek genellikle öğretmenin elinde olmayan (okulun dönüşmesi, sınıf kapanması vb.) sebeplerle olur. Öğretmenin iradesi dışında oluşan bu durumda, ilçe hatta il genelinde boş kalan okullara zorla gönderilme riski, mesleki güvence hissiyatını zedeleyebilir.")
 
@@ -655,7 +655,7 @@ with tab4:
     # 4. Mülakat
     st.subheader("4. Mülakat ve Sözlü Sınavın Varlığı (Madde 13 ve 18)")
     st.markdown("""
-    [cite_start]**BİLSEM (Madde 13)** atamalarında %40 sözlü sınav [cite: 126][cite_start], **Spor/Güzel Sanatlar Liseleri (Madde 18)** atamalarında ise %70 uygulama sınavı [cite: 165] puanı belirleyicidir.
+    **BİLSEM (Madde 13)** atamalarında %40 sözlü sınav, **Spor/Güzel Sanatlar Liseleri (Madde 18)** atamalarında ise %70 uygulama sınavı puanı belirleyicidir.
     """)
     st.warning("**Sorun:** Objektif kriterlere (KPSS, Hizmet Puanı) dayalı atama yerine, komisyon takdirine dayalı 'mülakat/uygulama' puanının yüksek oranda belirleyici olması, 'liyakat ve torpil' tartışmalarını beraberinde getirme potansiyeline sahiptir.")
 
@@ -664,7 +664,7 @@ with tab4:
     # 5. Sözleşmeli
     st.subheader("5. Sözleşmeli Öğretmenlikte 'Çakılı' Kadro Sorunu (Madde 5)")
     st.markdown("""
-    [cite_start]Yönetmeliğin **5. maddesi**, sözleşmeli öğretmenlerin kadroya geçtikten sonra da **1 yıl süreyle yer değiştiremeyeceğini** belirtmektedir[cite: 60, 61].
+    Yönetmeliğin **5. maddesi**, sözleşmeli öğretmenlerin kadroya geçtikten sonra da **1 yıl süreyle yer değiştiremeyeceğini** belirtmektedir.
     """)
     st.warning("**Sorun:** Toplamda 3+1 yıl (4 yıl) boyunca eş durumu, sağlık gibi anayasal hak sayılabilecek mazeretlerde bile hareket kabiliyetinin kısıtlanması, aile bütünlüğünü sağlamada mağduriyetler yaratmaya devam edebilir.")
 
@@ -673,7 +673,7 @@ with tab4:
     # 6. EBA
     st.subheader("6. EBA ve İçerik Üretimi Puanı (Madde 21/8)")
     st.markdown("""
-    [cite_start]Yönetmeliğin **21. maddesinin 8. fıkrasına** göre EBA için içerik üretene (onaylı senaryo/üretim) puan verilmektedir[cite: 206].
+    Yönetmeliğin **21. maddesinin 8. fıkrasına** göre EBA için içerik üretene (onaylı senaryo/üretim) puan verilmektedir.
     """)
     st.info("**Risk:** Öğretmenliğin asli işlevi olan 'sınıf içi eğitim' yerine, puan toplamak amacıyla sürekli dijital içerik üretmeye odaklanan bir 'içerik üreticisi' profili oluşabilir. Ayrıca içeriğin kalitesinin nasıl denetleneceği konusu belirsizlik yaratabilir.")
 
@@ -682,7 +682,7 @@ with tab4:
     # 7. Yöneticilik
     st.subheader("7. Yöneticilikte Geçen Sürelerin Sayılması (Madde 22)")
     st.markdown("""
-    [cite_start]Yönetmeliğin **22. maddesi** ve hizmet puanı esasları, yöneticilikte geçen sürelerin de hizmet puanı hesabına dahil edilmesini öngörmektedir[cite: 216].
+    Yönetmeliğin **22. maddesi** ve hizmet puanı esasları, yöneticilikte geçen sürelerin de hizmet puanı hesabına dahil edilmesini öngörmektedir.
     """)
     st.warning("**Eleştiri:** Yöneticilik yapanların sınıftan uzak kalmasına rağmen, sınıfta fiilen ders anlatan öğretmenle aynı (hatta bazen ek puanlarla daha fazla) hizmet puanı biriktirmesi, ileride tekrar öğretmenliğe döndüklerinde avantaj sağlamalarına neden olmaktadır.")
 
