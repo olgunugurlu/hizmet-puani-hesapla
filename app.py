@@ -622,7 +622,7 @@ with tab4:
 
     st.subheader("1. 12 Yıl Rotasyon Kuralı ve 'Resen' Atama Riski")
     st.markdown("""
-    [cite_start]Yönetmeliğin 28. maddesi[cite: 297, 298], aynı eğitim kurumunda 12 yılını dolduran öğretmenlerin yer değiştirmesini zorunlu kılmaktadır.
+    Yönetmeliğin 28. maddesi, aynı eğitim kurumunda 12 yılını dolduran öğretmenlerin yer değiştirmesini zorunlu kılmaktadır.
     """)
     st.warning("**Sorun:** Bu durum, okul kültürünü benimsemiş, başarısı kanıtlanmış ve veli/öğrenci ile bütünleşmiş tecrübeli öğretmenlerin zorla yerinden edilmesine neden olabilir.")
     st.error("**Risk:** Tercihlerine yerleşemeyen öğretmenlerin valiliklerce **'resen'** (istek dışı) atanacak olması, motivasyon kaybına ve aile düzenlerinin bozulmasına yol açabilir. Özellikle büyükşehirlerde ilçe grupları arası mesafelerin uzak olması ulaşım ve yaşam kalitesi sorunları doğurabilir.")
@@ -631,11 +631,11 @@ with tab4:
 
     st.subheader("2. Yarışma ve Ödül Puanlarının Dengesizliği")
     st.markdown("""
-    [cite_start]Yönetmelik [cite: 196-200], TÜBİTAK, Teknofest vb. yarışmalarda derece alan öğrencilerin öğretmenlerine çok yüksek puanlar (15 ile 40 puan arası) vermektedir.
+    Yönetmelik , TÜBİTAK, Teknofest vb. yarışmalarda derece alan öğrencilerin öğretmenlerine çok yüksek puanlar (15 ile 40 puan arası) vermektedir.
     """)
     col_a, col_b = st.columns(2)
     with col_a:
-        st.warning("**Sorun:** Bir öğretmenin 1. hizmet bölgesinde (en rahat yerler) 1 yıl boyunca (360 gün) çalışarak alacağı puan ortalama **10-12 puan** civarındayken [cite: 180-184], tek bir yarışma derecesiyle **40 puana** kadar ek puan alınabilmesi 'günlük emeği' değersizleştirebilir.")
+        st.warning("**Sorun:** Bir öğretmenin 1. hizmet bölgesinde (en rahat yerler) 1 yıl boyunca (360 gün) çalışarak alacağı puan ortalama **10-12 puan** civarındayken, tek bir yarışma derecesiyle **40 puana** kadar ek puan alınabilmesi 'günlük emeği' değersizleştirebilir.")
     with col_b:
         st.info("**Eşitsizlik:** İmkânları geniş, laboratuvarı olan, sosyo-ekonomik düzeyi yüksek okullardaki öğretmenlerin bu yarışmalara katılması ve derece alması; köy veya dezavantajlı bölge öğretmenlerine göre çok daha kolaydır. Bu durum, avantajlı okullardaki öğretmenlerin puan farkını daha hızlı açmasına neden olabilir.")
 
@@ -643,7 +643,7 @@ with tab4:
 
     st.subheader("3. 'Resen' Atama Uygulamalarının Yaygınlığı")
     st.markdown("""
-    [cite_start]Yönetmelikte hem zorunlu hizmet [cite: 254] [cite_start]hem de norm kadro fazlası [cite: 393, 395] durumlarında "tercihte bulunmayanların resen atanacağı" vurgusu çok sık geçmektedir.
+    Yönetmelikte hem zorunlu hizmet hem de norm kadro fazlası durumlarında "tercihte bulunmayanların resen atanacağı" vurgusu çok sık geçmektedir.
     """)
     st.error("**Risk:** Norm fazlası durumuna düşmek genellikle öğretmenin elinde olmayan (okulun dönüşmesi, sınıf kapanması vb.) sebeplerle olur. Öğretmenin iradesi dışında oluşan bu durumda, ilçe hatta il genelinde boş kalan (genellikle en az tercih edilen) okullara zorla gönderilme riski, mesleki güvence hissiyatını zedeleyebilir.")
 
@@ -651,7 +651,7 @@ with tab4:
 
     st.subheader("4. Mülakat ve Sözlü Sınavın Varlığı")
     st.markdown("""
-    [cite_start]BİLSEM [cite: 126] [cite_start]ve Spor/Güzel Sanatlar Liseleri [cite: 165] için yapılan atamalarda sözlü sınav/uygulama sınavı puanının etkisi (BİLSEM'de %40, Spor Liselerinde %70) oldukça yüksektir.
+    BİLSEM ve Spor/Güzel Sanatlar Liseleri için yapılan atamalarda sözlü sınav/uygulama sınavı puanının etkisi (BİLSEM'de %40, Spor Liselerinde %70) oldukça yüksektir.
     """)
     st.warning("**Sorun:** Objektif kriterlere (KPSS, Hizmet Puanı) dayalı atama yerine, komisyon takdirine dayalı 'mülakat/uygulama' puanının belirleyici olması, her dönem 'liyakat ve torpil' tartışmalarını beraberinde getirme potansiyeline sahiptir.")
 
@@ -659,7 +659,7 @@ with tab4:
 
     st.subheader("5. Sözleşmeli Öğretmenlikte 'Çakılı' Kadro Sorunu")
     st.markdown("""
-    [cite_start]Sözleşmeli öğretmenlerin kadroya geçtikten sonra da 1 yıl yer değiştirememesi kuralı devam etmektedir [cite: 60-61].
+    Sözleşmeli öğretmenlerin kadroya geçtikten sonra da 1 yıl yer değiştirememesi kuralı devam etmektedir.
     """)
     st.warning("**Sorun:** Toplamda 3+1 yıl (4 yıl) boyunca eş durumu, sağlık gibi anayasal hak sayılabilecek mazeretlerde bile hareket kabiliyetinin kısıtlanması, aile bütünlüğünü sağlamada mağduriyetler yaratmaya devam edebilir.")
 
@@ -667,7 +667,7 @@ with tab4:
 
     st.subheader("6. EBA ve İçerik Üretimi Puanı")
     st.markdown("""
-    [cite_start]EBA için içerik üretene puan verilmesi [cite: 206-207] teşvik edici görünse de bazı riskler barındırır.
+    EBA için içerik üretene puan verilmesi teşvik edici görünse de bazı riskler barındırır.
     """)
     st.info("**Risk:** Öğretmenliğin asli işlevi olan 'sınıf içi eğitim' yerine, puan toplamak amacıyla sürekli dijital içerik üretmeye odaklanan bir 'içerik üreticisi' profili oluşabilir. Ayrıca içeriğin kalitesinin nasıl denetleneceği ve onay mekanizmasının hızı, puanlamada adaletsizlik yaratabilir.")
 
@@ -675,7 +675,7 @@ with tab4:
 
     st.subheader("7. Yöneticilikte Geçen Sürelerin Sayılması")
     st.markdown("""
-    [cite_start]Yöneticilikte geçen sürelerin, öğretmenin hizmet puanı hesabında görev yaptığı bölgenin puanı üzerinden değerlendirilmesi [cite: 216] olumludur ancak eleştiriye açıktır.
+    Yöneticilikte geçen sürelerin, öğretmenin hizmet puanı hesabında görev yaptığı bölgenin puanı üzerinden değerlendirilmesi olumludur ancak eleştiriye açıktır.
     """)
     st.warning("**Eleştiri:** Yöneticilik yapanların sınıftan uzak kalmasına rağmen, sınıfta fiilen ders anlatan öğretmenle aynı (hatta bazen ek puanlarla daha fazla) hizmet puanı biriktirmesi, ileride tekrar öğretmenliğe döndüklerinde, hiç yöneticilik yapmamış öğretmenlerin önüne geçmelerine neden olmaktadır.")
 
