@@ -212,6 +212,7 @@ with st.sidebar:
     )
 
 # -------------------- REPORT / DOWNLOAD HELPERS (GLOBAL) --------------------
+# -------------------- REPORT / DOWNLOAD HELPERS (GLOBAL) --------------------
 def compute_report(tasks: list[Task]):
     warnings = []
 
@@ -219,6 +220,7 @@ def compute_report(tasks: list[Task]):
     by_year_points = defaultdict(float)
     rows_detail = []
 
+    # 1. Okul Görevlerini Hesapla
     for t in tasks:
         days = float(t.days)
         if t.mode == "range":
@@ -240,20 +242,20 @@ def compute_report(tasks: list[Task]):
         by_year_points[str(t.year)] += pts
 
         rows_detail.append({
-            "Yıl": int(t.year),
-            "Okul/Kurum": t.school,
+            "Yıl": str(t.year),
+            "Okul/Kurum/Açıklama": t.school,
             "Bölge": int(t.region),
             "Alan": int(t.area),
             "Günlük Puan": daily,
             "İş günü": days,
-            "Temel Puan": pts,
-            "Mod": t.mode,
+            "Puan Tutarı": pts,
             "Başlangıç": t.start,
             "Bitiş": t.end,
         })
 
     base_total = sum(by_year_points.values())
 
+    # 2. Ek Puanları Hesapla
     bel_points = bel_ybo * 0.2 + bel_other * 0.1
     dyk_points = dyk_months * 0.5
     tel_points = telafi_months * 0.5
@@ -272,6 +274,7 @@ def compute_report(tasks: list[Task]):
     eba_c_cap = min(int(eba_content), 10)
     if int(eba_scenario) > 10 or int(eba_content) > 10:
         warnings.append("EBA/İÇYS: takvim yılı içinde sayı 10’u geçemez; 10 ile sınırlandı.")
+    
     if eba_ministry_assignment:
         eba_points = 0.0
         if eba_s_cap > 0 or eba_c_cap > 0:
@@ -283,29 +286,62 @@ def compute_report(tasks: list[Task]):
     if int(zumre_years) > 4:
         warnings.append("İl zümre: toplam max 4 puan; 4 ile sınırlandı.")
     zumre_points = z_years * 1.0
+    
+    manual_p = float(manual_extra)
 
-    extras_total = bel_points + dyk_points + tel_points + student_points + teacher_points + eba_points + zumre_points + float(manual_extra)
+    extras_total = bel_points + dyk_points + tel_points + student_points + teacher_points + eba_points + zumre_points + manual_p
     grand_total = base_total + extras_total
 
+    # 3. Ek Puanları Listeye Ekle (Sıfır olanları ekleme)
+    extras_list = [
+        ("EK PUAN: Belletici", bel_points),
+        ("EK PUAN: DYK/İYEP", dyk_points),
+        ("EK PUAN: Telafi/Destek", tel_points),
+        ("EK PUAN: Öğrenci Yarışması", student_points),
+        ("EK PUAN: Öğretmen Derecesi", teacher_points),
+        ("EK PUAN: EBA/İÇYS", eba_points),
+        ("EK PUAN: İl Zümre Bşk.", zumre_points),
+        ("EK PUAN: Manuel Giriş", manual_p),
+    ]
+
+    for name, score in extras_list:
+        if score > 0:
+            rows_detail.append({
+                "Yıl": "EK PUAN",
+                "Okul/Kurum/Açıklama": name,
+                "Bölge": "-",
+                "Alan": "-",
+                "Günlük Puan": 0,
+                "İş günü": 0,
+                "Puan Tutarı": score,
+                "Başlangıç": "-",
+                "Bitiş": "-",
+            })
+
+    # 4. Genel Toplam Satırı Ekle
+    rows_detail.append({
+        "Yıl": "TOPLAM",
+        "Okul/Kurum/Açıklama": "GENEL TOPLAM",
+        "Bölge": "",
+        "Alan": "",
+        "Günlük Puan": 0,
+        "İş günü": sum(by_year_days.values()),
+        "Puan Tutarı": grand_total,
+        "Başlangıç": "",
+        "Bitiş": "",
+    })
+
+    # Kontrol Uyarıları
     for y, dsum in by_year_days.items():
         if expected_days and abs(dsum - expected_days) > 0.01:
             warnings.append(f"{y}: iş günü toplamı {dsum} (kontrol hedefi {expected_days}).")
 
     summary_rows = []
     for y in sorted(by_year_days.keys()):
-        summary_rows.append({"Yıl": int(y), "Toplam İş günü": by_year_days[y], "Temel Puan": by_year_points[y]})
+        summary_rows.append({"Yıl": y, "Toplam İş günü": by_year_days[y], "Temel Puan": by_year_points[y]})
 
-    extras_breakdown = [
-        ("Belletici", bel_points),
-        ("DYK/İYEP", dyk_points),
-        ("Telafi/Destek", tel_points),
-        ("Öğrenci Yarışması", student_points),
-        ("Öğretmen Derecesi", teacher_points),
-        ("EBA/İÇYS", eba_points),
-        ("İl Zümre", zumre_points),
-        ("Manuel Ek", float(manual_extra)),
-        ("Ek Toplam", extras_total),
-    ]
+    # Ek Puan Tablosu (Sadece bilgi amaçlı sidebar özeti için)
+    extras_breakdown = extras_list + [("Ek Toplam", extras_total)]
 
     meta = {"Temel Toplam": base_total, "Ek Toplam": extras_total, "Genel Toplam": grand_total}
 
