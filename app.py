@@ -183,6 +183,13 @@ with st.sidebar:
     zumre_years = st.number_input("İl zümre başkanlığı yılı → 1/yıl (toplam max 4)", min_value=0, value=0, step=1)
     manual_extra = st.number_input("Manuel ek puan (isteğe bağlı)", value=0.0, step=0.5)
 
+    # ... (yukarıdaki sidebar kodlarının devamı) ...
+    
+    st.divider() # Araya bir çizgi çeker
+    st.subheader("İletişim")
+    st.markdown("📧 [olgunugurlu@gmail.com](mailto:olgunugurlu@gmail.com)")
+    st.write("🏫 Gazi Mesleki ve Teknik Anadolu Lisesi")
+
 # -------------------- REPORT / DOWNLOAD HELPERS (GLOBAL) --------------------
 def compute_report(tasks: list[Task]):
     warnings = []
