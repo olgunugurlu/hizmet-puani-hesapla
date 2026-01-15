@@ -185,10 +185,31 @@ with st.sidebar:
 
     # ... (yukarıdaki sidebar kodlarının devamı) ...
     
-    st.divider() # Araya bir çizgi çeker
-    st.subheader("İletişim")
-    st.markdown("📧 [olgunugurlu@gmail.com](mailto:olgunugurlu@gmail.com)")
-    st.write("🏫 Gazi Mesleki ve Teknik Anadolu Lisesi")
+    # st.divider() # Araya bir çizgi çeker
+    # st.subheader("İletişim")
+    # st.markdown("📧 [olgunugurlu@gmail.com](mailto:olgunugurlu@gmail.com)")
+    # st.write("🏫 Gazi Mesleki ve Teknik Anadolu Lisesi")
+
+    # st.markdown("---")
+
+    st.markdown(
+        """
+        <div style="
+            text-align: center;
+            font-size: 13px;
+            color: #dddddd;
+            line-height: 1.6;
+            padding-top: 10px;
+        ">
+            <b>İletişim</b><br>
+            📧 <a href="mailto:olgunugurlu@gmail.com" style="color:#4da3ff;">
+                olgunugurlu@gmail.com
+            </a><br>
+            🏫 Gazi Mesleki ve Teknik Anadolu Lisesi
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # -------------------- REPORT / DOWNLOAD HELPERS (GLOBAL) --------------------
 def compute_report(tasks: list[Task]):
