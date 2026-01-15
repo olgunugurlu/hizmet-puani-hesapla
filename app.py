@@ -19,6 +19,7 @@ hide_st_style = """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
 # -------------------- DAILY POINTS TABLE --------------------
+# Yönetmelik Madde 21 (1)
 DAILY_POINTS = {
     1: {1: 0.028, 2: 0.031, 3: 0.033, 4: 0.046, 5: 0.053, 6: 0.060},
     2: {1: 0.033, 2: 0.036, 3: 0.039, 4: 0.060, 5: 0.066, 6: 0.073},
@@ -26,6 +27,7 @@ DAILY_POINTS = {
 }
 
 # -------------------- EXTRA POINTS --------------------
+# Yönetmelik Madde 21 (5): TÜBİTAK, TÜBA ve Bakanlıkça onaylanan yarışmalar
 STUDENT_AWARD_POINTS = {
     "Yok": {"1-3": 0, "4-6": 0},
     "ULUSAL 1.lik (TÜBİTAK, TÜBA, TEKNOFEST vb.)": {"1-3": 15, "4-6": 20},
@@ -36,7 +38,7 @@ STUDENT_AWARD_POINTS = {
     "ULUSLARARASI 3.lük/Mansiyon (Bilim Olimpiyatları, Proje vb.)": {"1-3": 10, "4-6": 20},
 }
 
-# Yönetmelik Madde 21 (7): Ulusal/Uluslararası bilimsel, sanatsal, kültürel veya sportif yarışmalar
+# Yönetmelik Madde 21 (7): Öğretmenin bireysel dereceleri
 TEACHER_AWARD_POINTS = {
     "Yok": 0,
     "ULUSAL 1.lik (Bilimsel, Sanatsal, Kültürel, Sportif)": 20,
@@ -185,15 +187,6 @@ with st.sidebar:
     zumre_years = st.number_input("İl zümre başkanlığı yılı → 1/yıl (toplam max 4)", min_value=0, value=0, step=1)
     manual_extra = st.number_input("Manuel ek puan (isteğe bağlı)", value=0.0, step=0.5)
 
-    # ... (yukarıdaki sidebar kodlarının devamı) ...
-    
-    # st.divider() # Araya bir çizgi çeker
-    # st.subheader("İletişim")
-    # st.markdown("📧 [olgunugurlu@gmail.com](mailto:olgunugurlu@gmail.com)")
-    # st.write("🏫 Gazi Mesleki ve Teknik Anadolu Lisesi")
-
-    # st.markdown("---")
-
     st.markdown(
         """
         <div style="
@@ -213,7 +206,6 @@ with st.sidebar:
         unsafe_allow_html=True
     )
 
-# -------------------- REPORT / DOWNLOAD HELPERS (GLOBAL) --------------------
 # -------------------- REPORT / DOWNLOAD HELPERS (GLOBAL) --------------------
 def compute_report(tasks: list[Task]):
     warnings = []
@@ -358,9 +350,9 @@ def compute_report(tasks: list[Task]):
 def to_excel_bytes(detail_df, year_df, extras_df, warnings_list, meta_dict):
     output = BytesIO()
     with pd.ExcelWriter(output, engine="openpyxl") as writer:
-        detail_df.to_excel(writer, index=False, sheet_name="Gorevler")
+        detail_df.to_excel(writer, index=False, sheet_name="Gorevler_Detay")
         year_df.to_excel(writer, index=False, sheet_name="Yil_Ozet")
-        extras_df.to_excel(writer, index=False, sheet_name="Ek_Puanlar")
+        extras_df.to_excel(writer, index=False, sheet_name="Ek_Puanlar_Bilgi")
         pd.DataFrame({"Uyari": warnings_list}).to_excel(writer, index=False, sheet_name="Uyarilar")
         pd.DataFrame(list(meta_dict.items()), columns=["Kalem", "Deger"]).to_excel(writer, index=False, sheet_name="Toplamlar")
         cal_df = pd.DataFrame([asdict(r) for r in st.session_state.cal_ranges])
@@ -370,7 +362,7 @@ def to_excel_bytes(detail_df, year_df, extras_df, warnings_list, meta_dict):
     return output.getvalue()
 
 # -------------------- TABS --------------------
-tab1, tab2 = st.tabs(["Görevler / Okullar", "Takvim / Tatiller"])
+tab1, tab2, tab3 = st.tabs(["Görevler / Okullar", "Takvim / Tatiller", "Yardım / SSS"])
 
 with tab1:
     st.subheader("Görevler / Okullar")
@@ -486,7 +478,7 @@ with tab1:
                 file_name="hizmet_puani_raporu.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 use_container_width=True,
-                key="dl_excel_tab1",   # ✅ eklendi
+                key="dl_excel_tab1",
             )
         with d2:
             st.download_button(
@@ -495,7 +487,7 @@ with tab1:
                 file_name="gorev_detaylari.csv",
                 mime="text/csv",
                 use_container_width=True,
-                key="dl_csv_tab1",     # ✅ eklendi
+                key="dl_csv_tab1",
             )
 
 with tab2:
@@ -552,51 +544,74 @@ with tab2:
     else:
         st.info("Takvim listesi boş.")
 
-# with tab3:
-#     st.subheader("Rapor / İndir")
-#     detail_df, year_df, extras_df, meta, warnings = compute_report(st.session_state.tasks)
+with tab3:
+    st.header("📌 Sıkça Sorulan Sorular ve Rehber")
+    
+    st.info("Resmi Mevzuat Kaynağı: [9 Ocak 2026 Tarihli Resmi Gazete](https://www.resmigazete.gov.tr/eskiler/2026/01/20260109-1.htm)")
 
-#     c1, c2 = st.columns([1.1, 1])
-#     with c1:
-#         st.markdown("### Özet")
-#         st.metric("Temel Toplam", f"{meta['Temel Toplam']:.3f}")
-#         st.metric("Ek Toplam", f"{meta['Ek Toplam']:.3f}")
-#         st.metric("Genel Toplam", f"{meta['Genel Toplam']:.3f}")
+    st.markdown("""
+    ### 1) Hizmet puanı neye göre hesaplanır?
+    Hizmet puanı **fiilen çalışılan süreye** göre verilir.  
+    **Esas formül:** `Günlük hizmet puanı × fiilen çalışılan gün sayısı`  
+    Günlük puan; görev yapılan yerin **Hizmet Bölgesi (1–3)** ve **Hizmet Alanı (1–6)** değerine bağlıdır.
 
-#     with c2:
-#         if warnings:
-#             st.markdown("### Uyarılar")
-#             for w in warnings[:12]:
-#                 st.warning(w)
-#             if len(warnings) > 12:
-#                 st.info(f"{len(warnings)-12} uyarı daha var (indirilen raporda hepsi var).")
-#         else:
-#             st.success("Uyarı yok.")
+    ### 2) Hizmet bölgesi ve hizmet alanı neden önemli?
+    * **Hizmet Bölgesi (1–3):** İl/ilçe ve sosyo-coğrafi koşullara göre belirlenir.
+    * **Hizmet Alanı (1–6):** Okulun/kurumun zorluk derecesini ifade eder.
+    * **Alan 4–6 olan yerlerde:**
+        * Günlük hizmet puanı daha yüksektir.
+        * Yarışma/ödül gibi ek puanlar daha avantajlıdır.
 
-#     st.markdown("### Yıl Bazlı Temel Puan")
-#     st.dataframe(year_df, width='content')
+    ### 3) Aynı yıl içinde birden fazla okulda çalışılırsa ne olur?
+    Her okul/kurum ayrı ayrı değerlendirilir. Aynı yıl içinde; *Kadro okul + görevlendirme* veya *İdari görev + öğretmenlik* gibi durumlarda **her biri için fiilî gün kadar puan alınır.**
+    * Toplam gün sayısı sabit 180 olmak zorunda değildir; esas olan fiilî çalışmadır.
 
-#     st.markdown("### Ek Puanlar")
-#     st.dataframe(extras_df, width='content')
+    ### 4) Hangi süreler hizmet puanına sayılmaz?
+    * Aylıksız izinler (istisnalar hariç)
+    * Fiilen görev yapılmayan süreler
+    * Sendikal izin ve askerlik istisna olarak sayılabilir (duruma göre).
 
-#     st.markdown("### Görev Detayları")
-#     st.dataframe(detail_df, width='content')
+    ### 5) Tarih mi gün mü esas alınır?
+    Yönetmelik “yıl” veya “ay” değil, **gün esaslı** yaklaşır.
+    * Bu nedenle tarih aralığı girilerek iş günü hesabı yapılması en sağlıklısıdır.
+    * Hafta sonları ve resmi tatiller düşülmelidir.
 
-#     excel_bytes = to_excel_bytes(detail_df, year_df, extras_df, warnings, meta)
+    ### 6) Ek hizmet puanları (en sık kullanılanlar)
+    * **Belletici öğretmenlik:**
+        * YBO / özel eğitim: **0,2 puan**
+        * Diğer pansiyonlar: **0,1 puan**
+    * **DYK / İYEP / Telafi–Destek:**
+        * Aylık **0,5 puan**
+        * Aynı ayda birden fazla olsa bile **tek sayılır**.
+    * **İl zümre başkanlığı:**
+        * Yılda **1 puan**
+        * Toplamda en fazla 4 puan.
+    * **EBA / e-içerik üretimi:**
+        * Senaryo → **0,2 puan**
+        * e-İçerik → **0,3 puan**
+        * Takvim yılı içinde en fazla 10 adet. Bakanlık görevlendirmesi ile yapılan üretimler puan getirmez.
 
-#     st.download_button(
-#     label="⬇️ Excel olarak indir (.xlsx)",
-#     data=excel_bytes,
-#     file_name="hizmet_puani_raporu.xlsx",
-#     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-#     key="dl_excel_tab3",   # ✅ eklendi
-#     )
+    ### 7) Yarışma ve ödüller (Kritik Nokta)
+    Öğrenciyle veya öğretmenin kendisiyle ilgili (Ulusal / Uluslararası):
+    * 1., 2., 3. ve mansiyon ödülleri puan getirir.
+    * Aynı öğretmen için yalnızca **BİR ödül** dikkate alınır (en yüksek olan). Puanlar toplanmaz.
+    * Hizmet alanı 4–6 olan yerlerde bu puanlar daha yüksektir.
 
-#     st.download_button(
-#         label="⬇️ Görev Detaylarını CSV indir",
-#         data=detail_df.to_csv(index=False).encode("utf-8-sig"),
-#         file_name="gorev_detaylari.csv",
-#         mime="text/csv",
-#         key="dl_csv_tab3",     # ✅ eklendi
-#     )
+    ### 8) Hizmet alanı grubu (1–3 / 4–6) ne işe yarar?
+    Bu ayrım özellikle yarışma ve ödül puanlarında kullanılır.
+    * **1, 2, 3 → Grup 1–3**
+    * **4, 5, 6 → Grup 4–6**
+    * Yanlış grup seçimi doğrudan puan kaybı demektir.
 
+    ### 9) Hizmet puanı ne zaman “kilit” hale gelir?
+    * İl içi / il dışı yer değiştirme
+    * Özür grubu atamaları
+    * Norm fazlası durumlar
+    * Bazı görevlendirme ve tercih sıralamaları
+    * 👉 Aynı tercih listesinde tek belirleyici kriter çoğu zaman hizmet puanıdır.
+
+    ### 10) Öğretmen için altın kural
+    > **“Fiilen ne yaptıysan, ne kadar yaptıysan ve nerede yaptıysan; puanın odur.”**
+
+    Bu yüzden tarihleri, görevlendirmeleri ve ek görevleri düzenli ve belgeli takip etmek gerekir.
+    """)
